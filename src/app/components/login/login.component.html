@@ -1,0 +1,21 @@
+<div align="center">
+  <h1>Login!</h1>
+  <a routerLink="/register">Create account</a>
+  <br><br>
+  <table>
+    <tr>
+      <td><label for="username">Username: </label></td>
+      <td><input type="text" id="password" [(ngModel)]="username"></td>
+    </tr>
+    <tr>
+      <td><label for="password">Password: </label></td>
+      <td><input type="text" id="username" [(ngModel)]="password"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button (click)="login()">Login </button>
+      </td>
+    </tr>
+  </table>
+</div>
