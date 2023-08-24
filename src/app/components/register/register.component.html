@@ -1,1 +1,26 @@
-<p>register works!</p>
+<div align="center">
+    <h1>Register!</h1>
+    <a routerLink="/login">Have an account</a>
+    <br><br>
+    <table>
+      <tr>
+        <td><label for="username">Username: </label></td>
+        <td><input type="text" id="password" [(ngModel)]="username"></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password: </label></td>
+        <td><input type="password" id="username" [(ngModel)]="password"></td>
+      </tr>
+      <tr>
+        <td><label for="password">Re-Password: </label></td>
+        <td><input type="password" id="username" [(ngModel)]="re_password"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button (click)="register()">Register </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  

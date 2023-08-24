@@ -32,7 +32,7 @@ export class ItemService {
     }
     return -1;
   }
-  addItem(value: string) : void{
+  addItem(value: string, userLogin: User) : void{
     let id;
     if(this.listItem.length == 0){
       id = 1;
@@ -40,14 +40,19 @@ export class ItemService {
     else {
       id = this.listItem[this.listItem.length-1].id + 1;
     }
-    // let item :Item ={
-    //   // id: id,
-    //   // name : value,
-    //   // complete: false,
-    //   // isEdit: false,
-    //   // timeComplet
-    // }
-    // this.listItem.push(item)
+    let item :Item ={
+      id: id,
+      name : value,
+      complete: false,
+      isEdit: false,
+      timeStart:new Date(),
+      timeComplete: new Date(),
+      user: userLogin
+
+    }
+    console.log(item);
+    
+    this.listItem.push(item)
     localStorage.setItem("item", JSON.stringify(this.listItem))
   }
   editItem(id : number, newItem : Item): void{

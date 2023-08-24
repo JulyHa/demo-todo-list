@@ -1,9 +1,21 @@
+<div *ngIf="!userLogin">
+  <button class="btn" ><a routerLink="/login">Login</a></button>
+  <!-- <button class="btn" ngIf="!userLogin">Logout</button> -->
+</div>
+<div *ngIf="userLogin">
+  <button class="btn" (click)="logout()">Logout</button>
+  <!-- <button class="btn" ngIf="!userLogin">Logout</button> -->
+</div>
+
 <div align="center">
   <h1>MY TO DO LIST</h1>
-  <input type="text" placeholder="Add something to do..."
+  <div *ngIf="userLogin">
+     <input type="text" placeholder="Add something to do..."
          [(ngModel)]="itemValue"
          (keydown.enter)="addItem()">
   <button class="btnEdit" (click)="addItem()">Save</button>
+  </div>
+ 
   <div>
     <hr width="60%">
     <table width="60%">
@@ -11,15 +23,18 @@
         <td>
           <input type="checkbox" (click)="completeItem(item.id)" [checked]="item.complete">
         </td>
-        <td width="100%">
-<!--            <span style="text-align: left" *ngIf="!item.isEdit" (click)="editModel(item.id)">{{item.name}}</span>-->
-<!--              <span *ngIf="item.isEdit">-->
-<!--                <input style="width: 80%" autofocus  [(ngModel)]="editValue.name" (keydown.enter)="editItem(item.id)">-->
-<!--              <button class="btnEdit"  (click)="editItem(item.id )">Edit</button>-->
-<!--              </span>-->
+        <td width="100%" >
+          <span style="text-align: left" *ngIf="!item.isEdit" (click)="editModel(item.id)">{{item.name}}</span>
+          <span *ngIf="item.isEdit">
+            <input style="width: 80%"  [(ngModel)]="editValue.name" (keydown.enter)="editItem(item.id)">
+          <button class="btnEdit"  (click)="editItem(item.id )">Edit</button>
+          </span>
         </td>
         <td>
-            <button class="btnDelete" (click)="deleteItem(item.id)">Remove</button>
+          <button [routerLink]="['/view', item.id]">View</button>
+      </td>
+        <td>
+            <button (click)="deleteItem(item.id)" *ngIf="userLogin">Remove</button>
         </td>
       </tr>
     </table>

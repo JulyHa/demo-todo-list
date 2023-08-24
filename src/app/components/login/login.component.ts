@@ -12,8 +12,10 @@ export class LoginComponent implements OnInit{
   username : string = "";
   password : string = "";
   userService: UserService;
-  constructor(userService:UserService) {
+  router: Router
+  constructor(userService:UserService, router: Router) {
     this.userService = userService;
+    this.router = router;
   }
   ngOnInit(): void {
   }
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit{
     }
     let res = this.userService.checkExist(user);
     if(res){
-      alert('Done!')
+      localStorage.setItem('userLogin', JSON.stringify(user));
+      this.router.navigate(['/item'])
     }
     else{
       alert("Fail!")

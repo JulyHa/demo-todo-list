@@ -1,0 +1,11 @@
+<div align="center">
+    <h1>View detail item</h1>
+    <ul>
+        <li>Name: {{itemDetail.name}} </li>
+        <li>Username created: {{itemDetail.user.username}}</li>
+        <li>Time created: {{itemDetail.timeStart | date:'short'}}</li>
+        <li *ngIf="itemDetail.complete">Time completed: {{itemDetail.timeComplete | date: 'short'}}</li>
+        <li *ngIf="!itemDetail.complete">Doing</li>
+    </ul>
+</div>
+<a [routerLink]="['/item']">Go home!</a>
